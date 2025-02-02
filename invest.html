@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invest - Peace Peach Farm</title>
   <style>
-    /* Basic Reset */
     * {
       margin: 0;
       padding: 0;
@@ -46,7 +45,7 @@
       text-align: center;
       background: rgba(0, 0, 0, 0.5);
       padding: 2rem;
-      border-radius: 0px;
+      border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(10px);
       border: 2px solid;
@@ -62,7 +61,7 @@
 
     h1 {
       font-size: 2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       background: linear-gradient(90deg, #ff6bcb, #ffca85);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -70,11 +69,11 @@
 
     p {
       font-size: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       text-align: center;
     }
 
-    .link {
+    .link, .clipboard-button {
       display: block;
       padding: 12px 24px;
       font-size: 1rem;
@@ -83,33 +82,13 @@
       text-decoration: none;
       border-radius: 5px;
       transition: background-color 0.3s ease, transform 0.2s ease;
-      margin-bottom: 1rem;
-      width: 100%;
-      text-align: center;
-    }
-
-    .link:hover {
-      background: linear-gradient(45deg, #ff6bcb, #ffca85);
-      transform: scale(1.05);
-    }
-    .clipboard-button {
-      display: inline-block;
-      display: block;
-      padding: 10px 20px;
-      font-size: 1rem;
-      color: #fff;
-      background: linear-gradient(45deg, #ff85b3, #ffca85);
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 1rem;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-bottom: 1.5rem;
       width: 100%;
       text-align: center;
       cursor: pointer;
-      margin-top: 1rem; /* Consistent with Step 1 button spacing */
     }
 
-    .clipboard-button:hover {
+    .link:hover, .clipboard-button:hover {
       background: linear-gradient(45deg, #ff6bcb, #ffca85);
       transform: scale(1.05);
     }
@@ -117,18 +96,16 @@
     .address-container {
       display: flex;
       justify-content: center;
-      flex-direction: column;
       align-items: center;
+      flex-direction: column;
       background-color: rgba(255, 133, 179, 0.8);
-      padding: 10px;
+      padding: 12px;
       border-radius: 8px;
       color: #fff;
-      margin-top: 1.5rem;
-      font-size: 1.2rem;
-      margin-top: 1rem;
       font-size: 1rem;
       width: 100%;
-      word-break: break-word;
+      text-align: center;
+      cursor: pointer;
     }
 
     .copy-banner {
@@ -160,48 +137,37 @@
     <p>Step 1. Navigate to the Uniswap website or app by clicking the button below:</p>
     <a href="#" class="link" id="uniswapLink">Open Uniswap</a>
     <p>Step 2. Click to copy the address:</p>
-    <div class="address-container">
+    <div class="address-container" id="copyAddress">
       <span class="address-text" id="addressText">0x1b86E9332cBbadfD2a34f9b4E030185602116E0A</span>
-      <span class="copy-icon" id="copyIcon">📋</span>
     </div>
   </div>
   <div class="copy-banner" id="copyBanner">Address copied to clipboard!</div>
   
   <script>
-    // Handle the link for mobile devices
     document.getElementById('uniswapLink').addEventListener('click', function(e) {
       e.preventDefault();
-
-      // Try to open Uniswap app (uniswap://app) on mobile device
       const appLink = 'uniswap://app';
-      const fallbackURL = 'https://app.uniswap.org/#/swap'; // Fallback to web app if Uniswap is not installed
-
-      // Check if the device is mobile (simplified detection)
+      const fallbackURL = 'https://app.uniswap.org/#/swap';
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
+      
       if (isMobile) {
         window.location.href = appLink;
-
-        // Fallback mechanism: If the app doesn't open, after a delay, redirect to web app
         setTimeout(() => {
           if (document.hidden) {
             window.location.href = fallbackURL;
           }
-        }, 1500); // 1.5 seconds delay
+        }, 1500);
       } else {
-        // If not on mobile, redirect to the web version
         window.location.href = fallbackURL;
       }
     });
 
-    // Clipboard copy functionality
+    const copyAddress = document.getElementById('copyAddress');
     const addressText = document.getElementById('addressText');
-    const copyIcon = document.getElementById('copyIcon');
     const copyBanner = document.getElementById('copyBanner');
 
-    copyIcon.addEventListener('click', function() {
-      const address = addressText.textContent;
-      navigator.clipboard.writeText(address).then(() => {
+    copyAddress.addEventListener('click', function() {
+      navigator.clipboard.writeText(addressText.textContent).then(() => {
         showCopyBanner();
       }).catch(err => {
         alert("Failed to copy: " + err);
@@ -212,7 +178,7 @@
       copyBanner.style.display = 'block';
       setTimeout(() => {
         copyBanner.style.display = 'none';
-      }, 2000); // Hide banner after 2 seconds
+      }, 2000);
     }
   </script>
 </body>
