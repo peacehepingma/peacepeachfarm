@@ -170,17 +170,7 @@
       }
     });
   </script>
-    <script>
-    document.getElementById('copyAddress').addEventListener('click', function() {
-      navigator.clipboard.writeText(document.getElementById('addressText').textContent).then(() => {
-        document.getElementById('copyBanner').style.display = 'block';
-        setTimeout(() => {
-          document.getElementById('copyBanner').style.display = 'none';
-        }, 2000);
-      }).catch(err => {
-        alert("Failed to copy: " + err);
-      });
-    });
+  <script>
     document.getElementById('copyAddress').addEventListener('click', function() {
       navigator.clipboard.writeText(document.getElementById('addressText').textContent).then(() => {
         document.getElementById('copyBanner').style.display = 'block';
@@ -192,8 +182,6 @@
       });
     });
   </script>
-</body>
-</html>
 
 </body>
 </html>
