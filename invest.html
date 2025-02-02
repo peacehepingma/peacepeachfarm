@@ -97,7 +97,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      flex-direction: row;
       background-color: rgba(255, 133, 179, 0.8);
       padding: 12px;
       border-radius: 8px;
@@ -106,6 +106,13 @@
       width: 100%;
       text-align: center;
       cursor: pointer;
+      word-break: break-word;
+    }
+
+    .copy-icon {
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
     }
 
     .copy-banner {
@@ -138,48 +145,23 @@
     <a href="#" class="link" id="uniswapLink">Open Uniswap</a>
     <p>Step 2. Click to copy the address:</p>
     <div class="address-container" id="copyAddress">
+      <img src="https://img.icons8.com/?size=100&id=30&format=png&color=FFFFFF" class="copy-icon" alt="Copy Icon">
       <span class="address-text" id="addressText">0x1b86E9332cBbadfD2a34f9b4E030185602116E0A</span>
     </div>
   </div>
   <div class="copy-banner" id="copyBanner">Address copied to clipboard!</div>
   
   <script>
-    document.getElementById('uniswapLink').addEventListener('click', function(e) {
-      e.preventDefault();
-      const appLink = 'uniswap://app';
-      const fallbackURL = 'https://app.uniswap.org/#/swap';
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      
-      if (isMobile) {
-        window.location.href = appLink;
+    document.getElementById('copyAddress').addEventListener('click', function() {
+      navigator.clipboard.writeText(document.getElementById('addressText').textContent).then(() => {
+        document.getElementById('copyBanner').style.display = 'block';
         setTimeout(() => {
-          if (document.hidden) {
-            window.location.href = fallbackURL;
-          }
-        }, 1500);
-      } else {
-        window.location.href = fallbackURL;
-      }
-    });
-
-    const copyAddress = document.getElementById('copyAddress');
-    const addressText = document.getElementById('addressText');
-    const copyBanner = document.getElementById('copyBanner');
-
-    copyAddress.addEventListener('click', function() {
-      navigator.clipboard.writeText(addressText.textContent).then(() => {
-        showCopyBanner();
+          document.getElementById('copyBanner').style.display = 'none';
+        }, 2000);
       }).catch(err => {
         alert("Failed to copy: " + err);
       });
     });
-
-    function showCopyBanner() {
-      copyBanner.style.display = 'block';
-      setTimeout(() => {
-        copyBanner.style.display = 'none';
-      }, 2000);
-    }
   </script>
 </body>
 </html>
