@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Open Uniswap</title>
+  <title>Peace Peach Farm</title>
   <style>
     /* Basic Reset */
     * {
@@ -18,27 +18,46 @@
       background-size: cover;
       color: #f0f0f0;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
+    }
+
+    .navbar {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .navbar a {
+      color: #f0f0f0;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1.2rem;
+    }
+
+    .navbar a:hover {
+      color: #ffca85;
     }
 
     .container {
       text-align: center;
-      background: rgba(0, 0, 0, 0.5); /* Darkened background for readability */
+      background: rgba(0, 0, 0, 0.5);
       padding: 2rem;
       border-radius: 0px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px); /* Blur effect only on the box */
+      backdrop-filter: blur(10px);
       border: 2px solid;
       border-image-source: linear-gradient(90deg, #ff6bcb, #ffca85);
       border-image-slice: 1;
       width: 90%;
-      max-width: 400px; /* Ensures mobile-friendly vertical layout */
+      max-width: 600px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-top: 2rem;
     }
 
     h1 {
@@ -74,66 +93,48 @@
       transform: scale(1.05);
     }
 
-    .clipboard-button {
-      display: block;
-      padding: 10px 20px;
-      font-size: 1rem;
-      color: #fff;
-      background: linear-gradient(45deg, #ff85b3, #ffca85);
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 1rem;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      width: 100%;
-      text-align: center;
+    .dropdown {
+      position: relative;
+      display: inline-block;
     }
 
-    .clipboard-button:hover {
-      background: linear-gradient(45deg, #ff6bcb, #ffca85);
-      transform: scale(1.05);
-    }
-
-    .address-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: rgba(255, 133, 179, 0.8);
-      padding: 10px;
-      border-radius: 8px;
-      color: #fff;
-      margin-top: 1rem;
-      font-size: 1rem;
-      width: 100%;
-      word-break: break-word;
-    }
-
-    .copy-banner {
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #28a745;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 1rem;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    .dropdown-content {
       display: none;
-      z-index: 1000;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      min-width: 160px;
+      text-align: left;
+      border-radius: 5px;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      color: #f0f0f0;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background: #ff6bcb;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Open Uniswap App</h1>
-    <p>Step 1. Navigate to the Uniswap website or app by clicking the button below:</p>
-    <a href="#" class="link" id="uniswapLink">Open Uniswap</a>
-    <p>Step 2. Please send payments to the address below:</p>
-    <div class="address-container">
-      <span class="address-text" id="addressText">0x1b86E9332cBbadfD2a34f9b4E030185602116E0A</span>
-      <span class="copy-icon" id="copyIcon">📋</span>
-    </div>
+  <div class="navbar">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="invest.html">Invest</a>
   </div>
-  <div class="copy-banner" id="copyBanner">Address copied to clipboard!</div>
+
+  <div class="container">
+    <h1>Welcome to Peace Peach Farm</h1>
+    <p>Discover the finest peaches and organic produce grown with love.</p>
+    <a href="#" class="link">Explore Our Farm</a>
+  </div>
 </body>
 </html>
