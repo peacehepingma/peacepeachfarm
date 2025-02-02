@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Peace Peach Farm</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .navbar {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .navbar a {
+      color: #f0f0f0;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1.2rem;
+    }
+
+    .navbar a:hover {
+      color: #ffca85;
+    }
+
+    .header {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, #ff6bcb, #ffca85);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 2rem;
+      max-width: 1200px;
+    }
+
+    .gallery-item {
+      width: 300px;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="#">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="invest.html">Invest</a>
+    <a href="gallery.html">Gallery</a>
+  </div>
+
+  <div class="header">
+    <h1>Gallery</h1>
+  </div>
+
+  <div class="gallery-container">
+    <!-- Add images as background images to divs -->
+    <div class="gallery-item" style="background-image: url('photos/IMG_7362.JPG');"></div>
+    <div class="gallery-item" style="background-image: url('photos/IMG_7377.jpg');"></div>
+    <div class="gallery-item" style="background-image: url('photos/IMG_7404.jpg');"></div>
+    <div class="gallery-item" style="background-image: url('photos/IMG_7416.JPG');"></div>
+    <div class="gallery-item" style="background-image: url('photos/IMG_7458.jpg');"></div>
+    <div class="gallery-item" style="background-image: url('photos/IMG_7495.jpg');"></div>
+    <div class="gallery-item" style="background-image: url('photos/IMG_7642.jpg');"></div>
+    <div class="gallery-item" style="background-image: url('photos/IMG_7658.jpg');"></div>
+    <div class="gallery-item" style="background-image: url('photos/IMG_7736.jpg');"></div>
+  </div>
+</body>
+</html>
