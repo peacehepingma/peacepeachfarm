@@ -104,6 +104,21 @@
     .copy-icon:hover {
       transform: scale(1.1);
     }
+
+    .copy-banner {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 1000;
+    }
   </style>
 </head>
 <body>
@@ -116,6 +131,7 @@
       <span class="copy-icon" id="copyIcon">📋</span>
     </div>
   </div>
+  <div class="copy-banner" id="copyBanner">Address copied to clipboard!</div>
 
   <script>
     // Handle the link for mobile devices
@@ -147,15 +163,23 @@
     // Clipboard copy functionality
     const addressText = document.getElementById('addressText');
     const copyIcon = document.getElementById('copyIcon');
+    const copyBanner = document.getElementById('copyBanner');
 
     copyIcon.addEventListener('click', function() {
       const address = addressText.textContent;
       navigator.clipboard.writeText(address).then(() => {
-        alert("Address copied to clipboard: " + address);
+        showCopyBanner();
       }).catch(err => {
         alert("Failed to copy: " + err);
       });
     });
+
+    function showCopyBanner() {
+      copyBanner.style.display = 'block';
+      setTimeout(() => {
+        copyBanner.style.display = 'none';
+      }, 2000); // Hide banner after 2 seconds
+    }
   </script>
 </body>
 </html>
