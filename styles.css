@@ -1,0 +1,53 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212; /* Dark background */
+  color: #f0f0f0; /* Light text color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #1e90ff; /* Blue highlight */
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.link {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #1e90ff; /* Blue button */
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.link:hover {
+  background-color: #0066cc; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly enlarge button */
+}
+
+.link:active {
+  background-color: #005bb5; /* Even darker blue when clicked */
+  transform: scale(1); /* Button resets size on click */
+}
