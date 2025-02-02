@@ -78,6 +78,31 @@
       margin-top: 2rem;
     }
 
+    .image-container {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2rem;
+      border-radius: 0px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border: 2px solid;
+      border-image-source: linear-gradient(90deg, #ff6bcb, #ffca85);
+      border-image-slice: 1;
+      width: 90%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .image-container img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+
     h1 {
       font-size: 2rem;
       margin-bottom: 1rem;
@@ -160,5 +185,12 @@
     <p>Discover the finest peaches and organic produce grown with love.</p>
     <a href="#" class="link">Explore Our Farm</a>
   </div>
+
+  <div class="image-container">
+    <h1>How to Get to Us</h1>
+    <p></p>
+    <img src="Directions.png" alt="Peace Peach Farm Orchard Navigation Map">
+  </div>
+
 </body>
 </html>
