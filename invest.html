@@ -145,22 +145,29 @@
     <a href="#" class="link" id="uniswapLink">Open Uniswap</a>
     <p>Step 2. Click to copy the address:</p>
     <div class="address-container" id="copyAddress">
-      <img src="https://img.icons8.com/?size=100&id=30&format=png&color=FFFFFF" class="copy-icon" alt="Copy Icon">
+      <img src="https://img.icons8.com/?size=100&id=30&format=png&color=000000" class="copy-icon" alt="Copy Icon">
       <span class="address-text" id="addressText">0x1b86E9332cBbadfD2a34f9b4E030185602116E0A</span>
     </div>
   </div>
   <div class="copy-banner" id="copyBanner">Address copied to clipboard!</div>
   
   <script>
-    document.getElementById('copyAddress').addEventListener('click', function() {
-      navigator.clipboard.writeText(document.getElementById('addressText').textContent).then(() => {
-        document.getElementById('copyBanner').style.display = 'block';
+    document.getElementById('uniswapLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      const appLink = 'uniswap://app';
+      const fallbackURL = 'https://app.uniswap.org/#/swap';
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      
+      if (isMobile) {
+        window.location.href = appLink;
         setTimeout(() => {
-          document.getElementById('copyBanner').style.display = 'none';
-        }, 2000);
-      }).catch(err => {
-        alert("Failed to copy: " + err);
-      });
+          if (document.hidden) {
+            window.location.href = fallbackURL;
+          }
+        }, 1500);
+      } else {
+        window.location.href = fallbackURL;
+      }
     });
   </script>
 </body>
