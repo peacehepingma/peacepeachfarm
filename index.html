@@ -4,15 +4,158 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Uniswap</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212; /* Dark background */
+      color: #f0f0f0; /* Light text color */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #1e90ff; /* Blue highlight */
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .link {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      color: #fff;
+      background-color: #1e90ff; /* Blue button */
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .link:hover {
+      background-color: #0066cc; /* Darker blue on hover */
+      transform: scale(1.05); /* Slightly enlarge button */
+    }
+
+    .link:active {
+      background-color: #005bb5; /* Even darker blue when clicked */
+      transform: scale(1); /* Button resets size on click */
+    }
+
+    .clipboard-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #28a745; /* Green button */
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .clipboard-button:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+
+    .address-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #1e90ff;
+      padding: 10px;
+      border-radius: 8px;
+      color: #fff;
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+    }
+
+    .address-text {
+      margin-right: 10px;
+      font-family: 'Courier New', Courier, monospace;
+      word-break: break-all;
+    }
+
+    .copy-icon {
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #fff;
+      transition: transform 0.2s;
+    }
+
+    .copy-icon:hover {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>Open Uniswap App</h1>
     <p>Click the link below to open the Uniswap app on your mobile device:</p>
-    <a href="uniswap://app" class="link" id="uniswapLink">Open Uniswap</a>
+    <a href="#" class="link" id="uniswapLink">Open Uniswap</a>
+    <div class="address-container">
+      <span class="address-text" id="addressText">0x1b86E9332cBbadfD2a34f9b4E030185602116E0A</span>
+      <span class="copy-icon" id="copyIcon">📋</span>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // Handle the link for mobile devices
+    document.getElementById('uniswapLink').addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Try to open Uniswap app (uniswap://app) on mobile device
+      const appLink = 'uniswap://app';
+      const fallbackURL = 'https://app.uniswap.org/#/swap'; // Fallback to web app if Uniswap is not installed
+
+      // Check if the device is mobile (simplified detection)
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        window.location.href = appLink;
+
+        // Fallback mechanism: If the app doesn't open, after a delay, redirect to web app
+        setTimeout(() => {
+          if (document.hidden) {
+            window.location.href = fallbackURL;
+          }
+        }, 1500); // 1.5 seconds delay
+      } else {
+        // If not on mobile, redirect to the web version
+        window.location.href = fallbackURL;
+      }
+    });
+
+    // Clipboard copy functionality
+    const addressText = document.getElementById('addressText');
+    const copyIcon = document.getElementById('copyIcon');
+
+    copyIcon.addEventListener('click', function() {
+      const address = addressText.textContent;
+      navigator.clipboard.writeText(address).then(() => {
+        alert("Address copied to clipboard: " + address);
+      }).catch(err => {
+        alert("Failed to copy: " + err);
+      });
+    });
+  </script>
 </body>
 </html>
