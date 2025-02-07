@@ -129,14 +129,13 @@
       display: none;
       z-index: 1000;
     }
-    
   </style>
 </head>
 <body>
   <div class="navbar">
     <a href="index.html">Home</a>
-    <a href="#">About</a>
-    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="peachgallery.html">Gallery</a>
     <a href="contact.html">Contact</a>
     <a href="invest.html">Invest</a>
   </div>
@@ -153,37 +152,7 @@
   </div>
   <div class="copy-banner" id="copyBanner">Address copied to clipboard!</div>
   
-  <script>
-    document.getElementById('uniswapLink').addEventListener('click', function(e) {
-      e.preventDefault();
-      const appLink = 'uniswap://app';
-      const fallbackURL = 'https://app.uniswap.org/#/swap';
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      
-      if (isMobile) {
-        window.location.href = appLink;
-        setTimeout(() => {
-          if (document.hidden) {
-            window.location.href = fallbackURL;
-          }
-        }, 1500);
-      } else {
-        window.location.href = fallbackURL;
-      }
-    });
-  </script>
-  <script>
-    document.getElementById('copyAddress').addEventListener('click', function() {
-      navigator.clipboard.writeText(document.getElementById('addressText').textContent).then(() => {
-        document.getElementById('copyBanner').style.display = 'block';
-        setTimeout(() => {
-          document.getElementById('copyBanner').style.display = 'none';
-        }, 2000);
-      }).catch(err => {
-        alert("Failed to copy: " + err);
-      });
-    });
-  </script>
+
 
 </body>
 </html>

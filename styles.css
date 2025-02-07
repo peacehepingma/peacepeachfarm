@@ -25,3 +25,73 @@ p {
   background: linear-gradient(45deg, #ff6bcb, #ffca85);
   transform: scale(1.05);
 }
+
+
+/* General Navbar Styling */
+.navbar {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark background */
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Adds space between links */
+}
+
+/* Style for Navbar Links */
+.navbar a, .dropbtn {
+  color: #f0f0f0; /* Light text color */
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  background: none; /* Removes button background */
+  border: none; /* Removes default button border */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Remove default button styling */
+.dropbtn {
+  font-family: inherit;
+  display: inline-block;
+}
+
+/* Navbar Hover Effect */
+.navbar a:hover, .dropbtn:hover {
+  color: #ffca85; /* Light gold color on hover */
+}
+
+/* Dropdown Styling */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8); /* Dark background for dropdown */
+  min-width: 160px;
+  text-align: left;
+  border-radius: 5px;
+}
+
+/* Dropdown Content Links */
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: #f0f0f0;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+/* Dropdown Hover Effect */
+.dropdown-content a:hover {
+  background: #ff6bcb; /* Light pink highlight on hover */
+}
+
+/* Show dropdown when hovering */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
